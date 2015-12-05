@@ -1,5 +1,6 @@
 # gulp-json-hash-manifest
 A Gulp plugin for generating a JSON file with the hash checksums of a list of files.
+Inspired from [gulp-hashsum](https://github.com/remko/gulp-hashsum)
 
 ## Installation
 
