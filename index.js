@@ -19,7 +19,6 @@ function hashmanifest(options) {
 
     var hashesFilePath = path.resolve(options.dest, options.filename);
     var hashes = {};
-    var self = this;
     var pluginName = 'gulp-json-hash-manifest';
 
     function computeHash(file) {
@@ -28,7 +27,7 @@ function hashmanifest(options) {
         }
 
         if (file.isStream()) {
-            self.emit('error', new gutil.PluginError(pluginName, 'Streams not supported'));
+            this.emit('error', new gutil.PluginError(pluginName, 'Streams not supported'));
             return;
         }
 
@@ -39,10 +38,12 @@ function hashmanifest(options) {
             .update(file.contents, 'binary')
             .digest('hex');
 
-        self.push(file);
+        this.push(file);
     }
 
     function writeHashes() {
+        var self = this;
+
         if (!fs.existsSync(hashesFilePath)) {
             mkdirp(path.dirname(hashesFilePath));
         }
@@ -53,7 +54,7 @@ function hashmanifest(options) {
             }
         });
 
-        self.emit('end');
+        this.emit('end');
     }
 
     return through(computeHash, writeHashes);
