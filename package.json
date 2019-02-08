@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/toppr/gulp-json-hash-manifest#readme",
   "dependencies": {
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.11",
     "gulp-util": "^3.0.7",
     "mkdirp": "^0.5.1",
     "slash": "^1.0.0",
